@@ -1,0 +1,144 @@
+---
+name: Frida Sophia 
+surname: Orozco Ruiz
+position: "Research Engineer"
+#address: "Covered California"
+#profilepic: "./img/me.jpg"
+#www: "bryanjenks.dev"
+email: "sorozco@curie.fr"
+#email: "fs.orozcoruiz@gmail.com"
+github: sophia-orozco
+#linkedin: bryanjenks
+#orcid: 0000-0002-9604-3069
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: "3ca590"
+aboutme: "Interested in Gene Network Evolution and their Non-linear Dynamic properties applied to the Complex Biological System of Cancer."
+docname: CV
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+
+require(xfun)
+
+packages <- c('vitae'     # The CV's LaTeX Template
+             ,'tibble'    # Data structure for tribbles
+             ,'magrittr'  # The Pipe %>%
+             ,'here'      # Relative File Paths
+             ,'readr'     # Data Loading
+             ,'glue'      # String Manipulation
+            )
+
+xfun::pkg_attach2(packages, message = FALSE)
+
+source(file = here("r","data.r"))
+
+```
+
+# Education
+
+```{r EDUCATION}
+
+edu %>%
+  detailed_entries(
+    with = degree,
+    what = inst,
+    why = detail,
+    when = glue::glue("{startYear} --- {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+# Research Experience
+
+```{r Research Experience}
+
+work %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} -- {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+# Computer Skills and Languages
+
+```{r SKILLS}
+
+skills %>%
+  detailed_entries(
+    with = area,
+    what = skills,
+    why = detail
+  )
+
+```
+
+# Talks, Posters and Selected Course Attendances
+
+```{r POSTERS}
+
+posters %>%
+  detailed_entries(
+    with = title,
+    what = organization,
+    why = detail,
+    when = year,
+    where = where
+  )
+
+```
+
+# Schoolarships
+
+```{r SCHOOLARSHIP}
+
+schoolarships %>%
+  detailed_entries(
+    with = area,
+    what = institution,
+    why = detail,
+    when = year,
+    where = where
+  )
+
+```
+
+# Teaching Experience
+
+```{r TEACHING}
+
+teaching %>%
+  detailed_entries(
+    with = area,
+    what = institution,
+    why = detail,
+    when = year,
+    where = where
+  )
+
+```
+
+# Certifications
+
+```{r CERTIFICATIONS}
+
+certifications %>%
+  detailed_entries(
+    with = area,
+    what = institution,
+    when = year,
+    where = where
+  )
+
+```
+
+
+\pagebreak
